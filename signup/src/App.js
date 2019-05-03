@@ -1,9 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SignUpForm from'./pages/SignUpForm';
+import SignInForm from './pages/SignInForm';
+import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
 
 function App() {
   return (
+    <Router>
+ 
     <div className="App">
       <div className="App__Aside" >
       </div>
@@ -11,17 +16,26 @@ function App() {
       <div className="App__Form" >
       
         <div className="PageSwitcher" >
-          <a href="#" className="PageSwitcher__Item" > Sign In </a>
-          <a href="#" className="PageSwitcher__Item PageSwitcher__Item--Active " > Sign Up </a>
+          <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item" > Sign In </NavLink>
+          <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item" > Sign Up </NavLink>
         </div>
 
         <div className="FormTitle" >
-          <a href="#" className="FormTitle__Link" > Sign In </a> or
-          <a href="#" className="FormTitle__Link FormTitle_Link--Active" > Sign Up </a>
+          <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link" > Sign In </NavLink> or
+          <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link " > Sign Up </NavLink>
         </div>
+        <Route exact path="/" component={SignUpForm} >
+         
+        </Route>
+
+        <Route path="/sign-in" component={SignInForm} >
+         
+        </Route>
 
       </div>
     </div>
+        
+    </Router>
   );
 }
 
